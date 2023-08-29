@@ -6,16 +6,19 @@
  *
  * */
 
-package Actions;
+package ActionsClass;
 
-public class Login {
-    public Login() {
+import org.openqa.selenium.WebDriver;
+
+public class LoginActions {
+    WebDriver driver;
+    public LoginActions( WebDriver driver) {
+        this.driver = driver;
     }
 
     public static void loginToTestSite() {
     }
 
     public void loginToSite() {
-
     }
 }

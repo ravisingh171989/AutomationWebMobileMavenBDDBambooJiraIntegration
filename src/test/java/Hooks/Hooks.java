@@ -19,7 +19,8 @@ import org.openqa.selenium.WebDriver;
 public class Hooks {
     private WebDriver driver;
 
-    public Hooks() {
+    @BeforeAll
+    public static void beforeAll() {
     }
 
     @Before
@@ -38,10 +39,6 @@ public class Hooks {
             scenario.attach(screenshot, "image/png", scenario.getName());
         }
         driver.quit();
-    }
-
-    @BeforeAll
-    public static void beforeAll() {
     }
 
     @AfterAll

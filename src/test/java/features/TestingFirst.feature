@@ -5,7 +5,7 @@
 
 Feature: Test the first scenario.
   Scenario: First scenario to be tested
-    Given I Anand developing the Automation Framework and launches a "Test" site
+    Given I Anand developing the Automation Framework and launches a "Test"
     When I login to "Test" site with "testing" credential
     Then I should be able to verify that I am able to login to "testing" account
 

@@ -8,12 +8,18 @@
 
 package StepDefs;
 
-import io.cucumber.java.en.*;
-import org.openqa.selenium.*;
+import io.cucumber.java.en.Given;
+import org.openqa.selenium.WebDriver;
+import ActionsClass.LoginActions;
 
 public class Login {
-    @Given("^I Anand developing the Automation Framework and launches a \"([^\"]*)\" site$")
-    public void iAnandDevelopingTheAutomationFrameworkAndLaunchesASite( String arg0 ) throws Throwable {
-        Actions.Login.loginToTestSite();
+    WebDriver driver;
+    public Login() {
+        LoginActions loginActions = new LoginActions(driver);
+
+    }
+    @Given("^I Anand developing the Automation Framework and launches a \"([^\"]*)\"$")
+    public void iAnandDevelopingTheAutomationFrameworkAndLaunchesASite(String Env) throws Throwable {
+        LoginActions.loginToTestSite();
     }
 }
