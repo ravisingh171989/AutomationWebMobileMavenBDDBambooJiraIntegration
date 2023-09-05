@@ -11,7 +11,10 @@ package Drivers;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
 import static Constants.FrameworkConstants.BROWSER_CHROME;
+import static Constants.FrameworkConstants.BROWSER_FIREFOX;
 
 public class DriverFactory {
 
@@ -22,6 +25,11 @@ public class DriverFactory {
 			case BROWSER_CHROME: {
 				WebDriverManager.chromedriver().setup();
 				driver = new ChromeDriver();
+				break;
+			}
+			case BROWSER_FIREFOX: {
+				WebDriverManager.firefoxdriver().setup();
+				driver = new FirefoxDriver();
 				break;
 			}
 			default:

@@ -15,4 +15,5 @@ public class FrameworkConstants {
 	public static final String PARAMETER_ENV = "env";
 	public static final String PARAMETER_BROWSER = "browser";
 	public static final String BROWSER_CHROME = "chrome";
+	public static final String BROWSER_FIREFOX = "firefox";
 }
