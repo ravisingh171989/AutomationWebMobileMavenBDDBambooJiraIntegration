@@ -6,15 +6,15 @@
  *
  * */
 
-package Drivers;
+package AutomationComponents.Drivers;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-import static Constants.FrameworkConstants.BROWSER_CHROME;
-import static Constants.FrameworkConstants.BROWSER_FIREFOX;
+import static AutomationComponents.Constants.FrameworkConstants.BROWSER_CHROME;
+import static AutomationComponents.Constants.FrameworkConstants.BROWSER_FIREFOX;
 
 public class DriverFactory {
 

@@ -6,20 +6,22 @@
  *
  * */
 
-package AutomationWebMobileMavenBDDBambooJiraIntegration.TestRunner;
+package AutomationComponents.TestRunner;
 
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
 import org.testng.annotations.DataProvider;
 
 @CucumberOptions(
+        glue = { "AutomationComponents" },
         plugin = {
-                "html:target/cucumber/cucumber.html" ,
-                "me.jvt.cucumber.report.PrettyReports:target/cucumber/"
+                "html:target/cucumber/cucumber.html"
         },
-        glue = { "AutomationWebMobileMavenBDDBambooJiraIntegration" },
         features = "src/test/resources/features",
-        //tags = "@Regression_Test")
+        tags = "@Regression_Test"
+        //monochrome=true,
+        //dryRun=true
+)
 
 public class TestNGRunner extends AbstractTestNGCucumberTests {
     @Override

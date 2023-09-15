@@ -6,27 +6,28 @@
 *
 * */
 
-package Hooks;
+package AutomationComponents.Hooks;
 
-import static Constants.FrameworkConstants.*;
-
-import Drivers.DriverFactory;
-import io.cucumber.java.*;
+import static AutomationComponents.Constants.FrameworkConstants.*;
+import AutomationComponents.Drivers.DriverFactory;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import io.cucumber.java.*;
 
 public class Hooks {
     private WebDriver driver;
 
     @BeforeAll
     public static void beforeAll() {
+        WebDriverManager.chromedriver().setup();
     }
 
     @Before
     public void before(Scenario scenario) {
         System.out.println(
-                "BEFORE: THREAD ID : " + Thread.currentThread().getId() + "," + "SCENARIO NAME: " + scenario.getName());
+                "BEFORE: THREAD ID : " + Thread.currentThread().threadId() + "," + "SCENARIO NAME: " + scenario.getName());
         driver = DriverFactory.initializeDriver(System.getProperty(PARAMETER_BROWSER, BROWSER_CHROME));
     }
 

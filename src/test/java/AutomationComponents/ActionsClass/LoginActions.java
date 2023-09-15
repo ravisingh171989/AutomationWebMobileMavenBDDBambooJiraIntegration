@@ -6,7 +6,7 @@
  *
  * */
 
-package ActionsClass;
+package AutomationComponents.ActionsClass;
 
 import org.openqa.selenium.WebDriver;
 
@@ -16,7 +16,7 @@ public class LoginActions {
         this.driver = driver;
     }
 
-    public static void loginToTestSite() {
+    public static void loginToTestSite(String url) {
     }
 
     public void loginToSite() {
