@@ -6,13 +6,12 @@
  *
  * */
 
-package AutomationComponents.StepDefs;
+package AutomationComponents.StepDefinition;
 
 import AutomationComponents.Utils.GenericActions;
 import io.cucumber.java.en.*;
 import org.openqa.selenium.WebDriver;
 import AutomationComponents.ActionsClass.LoginActions;
-import AutomationComponents.Utils.GenericActions;
 
 public class LoginStepDefinition {
     GenericActions genericActions;

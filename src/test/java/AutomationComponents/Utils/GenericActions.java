@@ -9,10 +9,9 @@ import java.util.Properties;
 
 public class GenericActions {
     Properties properties;
-    WebDriver driver = null;
+    private WebDriver driver;
 
     public GenericActions(WebDriver driver) {
-        super();
         this.driver = driver;
     }
 
