@@ -1,4 +1,14 @@
+/*
+ *   Author: Anand Ravi
+ *   https://www.linkedin.com/in/anandravisingh/
+ *   https://github.com/ravisingh171989
+ *   https://anand.github.io/
+ *
+ * */
+
 package AutomationComponents.Utils;
+
+import org.openqa.selenium.WebDriver;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -7,10 +17,10 @@ import java.io.IOException;
 import java.util.Properties;
 
 import static AutomationComponents.Constants.FrameworkConstants.DIRECTORY_ENV_CONFIG;
-import static AutomationComponents.Constants.FrameworkConstants.PARAMETER_ENV;
 
 public class Utils {
     private static final String SEND_EMAIL_TO_USERS = "send_email_to_users";
+    String PARAMETER_ENV = System.getProperty("env");
 
     // private final Properties properties;
     private Properties properties;
@@ -18,15 +28,11 @@ public class Utils {
     private static Utils utils;
 
     private Utils() {
-        /**
-         * Setting the Environment Parameter here.
-         *
-         * By default, Stage will be taken
-         */
         properties = propertyReader(DIRECTORY_ENV_CONFIG + PARAMETER_ENV+"/config.properties");
     }
 
-    public static Utils getInstance(String URL) {
+    public static Utils getInstance() {
+        System.out.println("test3");
         if (utils == null) {
             utils = new Utils();
         }

@@ -7,7 +7,7 @@ Feature: Test the first scenario.
 
   @Regression_Test
   Scenario: 01 - First scenario to be tested
-    Given I Anand developing the Automation Framework and launches a "UAT" site
+    Given I Anand developing the Automation Framework and launches a "SIT" site
     When I login to "Test" site with "testing" credential
     Then I should be able to verify that I am able to login to "testing" account
 

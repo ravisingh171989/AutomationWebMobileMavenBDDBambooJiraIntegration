@@ -13,27 +13,18 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-import static AutomationComponents.Constants.FrameworkConstants.BROWSER_CHROME;
-import static AutomationComponents.Constants.FrameworkConstants.BROWSER_FIREFOX;
-
 public class DriverFactory {
 
 	public static WebDriver initializeDriver(String browser) {
-		WebDriver driver;
+		WebDriver driver = null;
+		browser = System.getProperty("browser");
 
-		switch (browser) {
-			case BROWSER_CHROME: {
+		if (browser.equalsIgnoreCase("chrome")) {
 				WebDriverManager.chromedriver().setup();
 				driver = new ChromeDriver();
-				break;
-			}
-			case BROWSER_FIREFOX: {
+		} else if (browser.equalsIgnoreCase("firefox")) {
 				WebDriverManager.firefoxdriver().setup();
 				driver = new FirefoxDriver();
-				break;
-			}
-			default:
-				throw new IllegalStateException("INVALID BROWSER: " + browser);
 		}
 		driver.manage().window().maximize();
 		return driver;

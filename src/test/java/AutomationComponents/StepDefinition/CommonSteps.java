@@ -1,21 +1,32 @@
+/*
+ *   Author: Anand Ravi
+ *   https://www.linkedin.com/in/anandravisingh/
+ *   https://github.com/ravisingh171989
+ *   https://anand.github.io/
+ *
+ * */
+
 package AutomationComponents.StepDefinition;
 
-import AutomationComponents.ActionsClass.LoginActions;
-import AutomationComponents.Utils.GenericActions;
+import AutomationComponents.Drivers.PageFactoryManager;
+import AutomationComponents.ActionsClass.GenericActions;
+import AutomationComponents.Worlds.World;
 import io.cucumber.java.en.*;
-import org.openqa.selenium.WebDriver;
 
-public class CommonSteps extends GenericActions {
-    WebDriver driver = null;
-    GenericActions genericActions;
+import java.util.logging.Logger;
 
-    public CommonSteps(WebDriver driver) {
-        super(driver);
-        this.driver = driver;
+public class CommonSteps {
+    private final World world;
+    private final GenericActions genericActions;
+    Logger LOG;
+
+    public CommonSteps(World world) {
+        this.world = world;
+        genericActions = PageFactoryManager.getGenericActions(world.driver);
     }
 
     @Given("I Anand developing the Automation Framework and launches a {string} site")
     public void i_anand_developing_the_automation_framework_and_launches_a_site( String siteURL ) {
-        genericActions.initBrowser(siteURL);
+        genericActions.launchURL(siteURL);
     }
 }

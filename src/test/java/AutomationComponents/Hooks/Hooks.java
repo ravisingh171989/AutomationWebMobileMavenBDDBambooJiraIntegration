@@ -10,24 +10,29 @@ package AutomationComponents.Hooks;
 
 import static AutomationComponents.Constants.FrameworkConstants.*;
 import AutomationComponents.Drivers.DriverFactory;
+import AutomationComponents.Worlds.World;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import io.cucumber.java.*;
 
-public class Hooks {
-    private WebDriver driver;
+import java.util.logging.Logger;
 
-    @BeforeAll
-    public static void beforeAll() {
-        WebDriverManager.chromedriver().setup();
+public class Hooks {
+    private final World world;
+    private WebDriver driver;
+    Logger LOG;
+
+    public Hooks(World world) {
+        this.world = world;
     }
 
     @Before
     public void before(Scenario scenario) {
         System.out.println("BEFORE: THREAD ID : " + Thread.currentThread().threadId() + "," + "SCENARIO NAME: " + scenario.getName());
         driver = DriverFactory.initializeDriver(System.getProperty(PARAMETER_BROWSER, BROWSER_CHROME));
+        world.driver = driver;
     }
 
     @After
@@ -40,6 +45,10 @@ public class Hooks {
         driver.quit();
     }
 
+    @BeforeAll
+    public static void beforeAll() {
+        WebDriverManager.chromedriver().setup();
+    }
     @AfterAll
     public static void afterAll() {
     }

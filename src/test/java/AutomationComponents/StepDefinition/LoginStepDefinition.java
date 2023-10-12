@@ -7,22 +7,26 @@
  * */
 
 package AutomationComponents.StepDefinition;
-
-import AutomationComponents.Utils.GenericActions;
+import AutomationComponents.ActionsClass.GenericActions;
+import AutomationComponents.Drivers.PageFactoryManager;
+import AutomationComponents.Worlds.World;
 import io.cucumber.java.en.*;
-import org.openqa.selenium.WebDriver;
 import AutomationComponents.ActionsClass.LoginActions;
 
 public class LoginStepDefinition {
     GenericActions genericActions;
+    World world;
+    LoginActions loginActions;
 
-    public LoginStepDefinition(WebDriver driver) {
-        genericActions = new GenericActions(driver);
+    public LoginStepDefinition(World world) {
+        this.world = world;
+        genericActions = PageFactoryManager.getGenericActions(world.driver);
+        loginActions = new LoginActions(world.driver);
     }
 
     @Given("I login to {string} site with {string} credential")
-    public void ILoginToSiteWithCredential( String siteURL ) {
-        LoginActions.loginToTestSite(siteURL);
+    public void ILoginToSiteWithCredential( String siteURL, String creds ) throws InterruptedException {
+        loginActions.loginToTestSite(siteURL, creds);
     }
 
     @Then("I should be able to verify that I am able to login to {string} account")
