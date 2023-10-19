@@ -27,5 +27,5 @@ replay_pid*
 *.iml
 .gitignore
 .idea
-/target
+target/
 /test-classes

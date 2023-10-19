@@ -10,6 +10,7 @@ package AutomationComponents.TestRunner;
 
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
+import org.testng.annotations.DataProvider;
 
 @CucumberOptions(
         glue = { "AutomationComponents.Hooks","AutomationComponents/StepDefinition" },
@@ -20,5 +21,11 @@ import io.cucumber.testng.CucumberOptions;
         tags = "@Regression_Test",
         monochrome=true
 )
+
 public class TestNGRunner extends AbstractTestNGCucumberTests {
+        @Override
+        @DataProvider(parallel = true)
+        public Object[][] scenarios() {
+                return super.scenarios();
+        }
 }

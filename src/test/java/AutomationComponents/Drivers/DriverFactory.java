@@ -25,6 +25,7 @@ public class DriverFactory {
 	public static WebDriver initializeDriver(String browser) throws MalformedURLException, URISyntaxException {
 		WebDriver driver = null;
 		browser = System.getProperty("browser");
+		String executionType = System.getProperty("executionType");
 		String url = "http://localhost:4444/wd/hub";
 		DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
 		desiredCapabilities.setBrowserName(browser);
@@ -32,12 +33,18 @@ public class DriverFactory {
 		URI uri = new URI(url);
 		if (browser.equalsIgnoreCase("chrome")) {
 			WebDriverManager.chromedriver().setup();
-			//driver = new ChromeDriver();
-			driver = new RemoteWebDriver(uri.toURL(), desiredCapabilities);
+			if (executionType.equalsIgnoreCase("remote")) {
+				driver = new RemoteWebDriver(uri.toURL(), desiredCapabilities);
+			} else if (executionType.equalsIgnoreCase("local")) {
+				driver = new ChromeDriver();
+			}
 		} else if (browser.equalsIgnoreCase("firefox")) {
 			WebDriverManager.firefoxdriver().setup();
-			//driver = new FirefoxDriver();
-			driver = new RemoteWebDriver(uri.toURL(), desiredCapabilities);
+			if (executionType.equalsIgnoreCase("remote")) {
+				driver = new RemoteWebDriver(uri.toURL(), desiredCapabilities);
+			} else if (executionType.equalsIgnoreCase("local")) {
+				driver = new FirefoxDriver();
+			}
 		}
 		driver.manage().window().maximize();
 		return driver;
