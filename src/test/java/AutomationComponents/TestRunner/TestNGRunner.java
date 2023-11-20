@@ -15,7 +15,9 @@ import org.testng.annotations.DataProvider;
 @CucumberOptions(
         glue = { "AutomationComponents.Hooks","AutomationComponents/StepDefinition" },
         plugin = {
-                "html:target/cucumber/cucumber.html"
+                "pretty",
+                "json:target/cucumber-report/cucumber.json",
+                "html:target/cucumber-report/cucumber.html"
         },
         features = "src/test/resources/features",
         tags = "@Regression_Test",
