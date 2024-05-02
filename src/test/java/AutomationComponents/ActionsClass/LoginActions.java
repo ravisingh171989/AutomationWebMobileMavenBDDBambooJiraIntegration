@@ -35,5 +35,16 @@ public class LoginActions {
         waitForPageToLoad("Password Page");
         sleep(10);
         sendkeysToElement(ObjectRepositoryOfSite.passwordTextbox, password);
+        //From this piece of code we will get code from 1Pass
+        String firstTab = driver.getWindowHandle();
+        // open yahoo in new tab
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.open('')");
+        genericActions.waitForPageToLoad("1Password");
+        // get the 2nd browser handle
+        for(String winHandle : driver.getWindowHandles()){
+            driver.switchTo().window(winHandle);
+        }
+        String secondTab = driver.getWindowHandle();
     }
 }
