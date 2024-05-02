@@ -1,3 +1,10 @@
+/*
+ *   Author: Anand Ravi
+ *   https://www.linkedin.com/in/anandravisingh/
+ *   https://github.com/ravisingh171989
+ *   https://anand.github.io/
+ *
+ * */
 package AutomationComponents.ActionsClass;
 
 import AutomationComponents.ObjectRepository.ObjectRepositoryOfSite;
