@@ -1,26 +1,24 @@
-/*
- *   Author: Anand Ravi
- *   https://www.linkedin.com/in/anandravisingh/
- *   https://github.com/ravisingh171989
- *   https://anand.github.io/
- *
- * */
-
 package AutomationComponents.TestRunner;
 
+import io.cucumber.core.plugin.RerunFormatter;
+import io.cucumber.junit.Cucumber;
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
+import org.junit.runner.RunWith;
 import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
 
 @CucumberOptions(
         glue = { "AutomationComponents.Hooks","AutomationComponents/StepDefinition" },
         plugin = {
+                "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm",
                 "pretty",
-                "json:target/cucumber.json"
+                "json:target/cucumber.json",
+                "html:target/cucumber.html",
+                "rerun:target/TestFailedScenarios/failedrerun.txt"
         },
-        features = "src/test/resources/features",
-        tags = "@Regression_Test",
-        monochrome=true
+        tags = "@Regression_Test2",
+        features = "src/test/resources/features"
 )
 
 public class TestNGRunner extends AbstractTestNGCucumberTests {
