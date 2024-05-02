@@ -20,10 +20,12 @@ import io.cucumber.java.*;
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.util.logging.Logger;
+import static AutomationComponents.Constants.FrameworkConstants.PARAMETER_BROWSER;
+import static AutomationComponents.Constants.FrameworkConstants.PARAMETER_EXECUTIONTYPE;
 
 public class Hooks {
-    private final World world;
-    private WebDriver driver;
+    World world;
+    WebDriver driver;
     Logger LOG;
 
     public Hooks(World world) {
@@ -33,7 +35,7 @@ public class Hooks {
     @Before
     public void before(Scenario scenario) throws MalformedURLException, URISyntaxException {
         System.out.println("BEFORE: THREAD ID : " + Thread.currentThread().threadId() + "," + "SCENARIO NAME: " + scenario.getName());
-        driver = DriverFactory.initializeDriver(System.getProperty(PARAMETER_BROWSER, BROWSER_CHROME));
+        driver = DriverFactory.initializeDriver(System.getProperty(PARAMETER_BROWSER),System.getProperty(PARAMETER_EXECUTIONTYPE));
         world.driver = driver;
     }
 
@@ -49,7 +51,6 @@ public class Hooks {
 
     @BeforeAll
     public static void beforeAll() {
-        WebDriverManager.chromedriver().setup();
     }
     @AfterAll
     public static void afterAll() {
