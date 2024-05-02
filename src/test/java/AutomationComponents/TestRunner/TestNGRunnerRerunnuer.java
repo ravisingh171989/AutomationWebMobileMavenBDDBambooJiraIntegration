@@ -11,8 +11,8 @@ import org.testng.annotations.DataProvider;
         plugin = {
                 "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm",
                 "pretty",
-                "json:target/cucumber-reports/cucumber.json",
-                "html:target/cucumber-reports/cucumber.html"}
+                "json:target1/cucumber-reports/cucumber.json",
+                "html:target1/cucumber-reports/cucumber.html"}
 )
 public class TestNGRunnerRerunner extends AbstractTestNGCucumberTests {
     @Override
