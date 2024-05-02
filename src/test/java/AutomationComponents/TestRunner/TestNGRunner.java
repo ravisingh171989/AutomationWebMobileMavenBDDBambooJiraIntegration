@@ -13,8 +13,8 @@ import org.testng.annotations.Test;
         plugin = {
                 "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm",
                 "pretty",
-                "json:target/cucumber.json",
-                "html:target/cucumber.html",
+                "json:target/cucumber-reports/cucumber.json",
+                "html:target/cucumber-reports/cucumber.html",
                 "rerun:target/TestFailedScenarios/failedrerun.txt"
         },
         tags = "@Regression_Test2",
