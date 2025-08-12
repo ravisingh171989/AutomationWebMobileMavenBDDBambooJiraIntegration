@@ -19,6 +19,7 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import org.openqa.selenium.grid.Main;
 
 public class DriverFactory {
 
@@ -31,19 +32,25 @@ public class DriverFactory {
 		desiredCapabilities.setBrowserName(browser);
 		desiredCapabilities.setPlatform(Platform.ANY);
 		URI uri = new URI(url);
+		// Start Selenium Grid in standalone mode
+		Main.main(new String[] { "standalone", "--port", "4445" });
 		if (browser.equalsIgnoreCase("chrome")) {
+			// Resolve driver for Selenium Grid
 			WebDriverManager.chromedriver().setup();
 			if (executionType.equalsIgnoreCase("remote")) {
-				driver = new RemoteWebDriver(uri.toURL(), desiredCapabilities);
+				driver = WebDriverManager.chromedriver()
+						.remoteAddress("http://localhost:4445/wd/hub").create();
+				//driver = new RemoteWebDriver(uri.toURL(), desiredCapabilities);
 			} else if (executionType.equalsIgnoreCase("local")) {
-				driver = new ChromeDriver();
+				driver = WebDriverManager.chromedriver().create();
 			}
 		} else if (browser.equalsIgnoreCase("firefox")) {
 			WebDriverManager.firefoxdriver().setup();
 			if (executionType.equalsIgnoreCase("remote")) {
-				driver = new RemoteWebDriver(uri.toURL(), desiredCapabilities);
+				driver = WebDriverManager.chromedriver()
+						.remoteAddress("http://localhost:4445/wd/hub").create();
 			} else if (executionType.equalsIgnoreCase("local")) {
-				driver = new FirefoxDriver();
+				driver = WebDriverManager.firefoxdriver().create();
 			}
 		}
 		driver.manage().window().maximize();

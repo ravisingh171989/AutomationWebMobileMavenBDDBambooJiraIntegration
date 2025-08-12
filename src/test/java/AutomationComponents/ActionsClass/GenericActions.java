@@ -89,4 +89,12 @@ public class GenericActions {
     public static void sleep(int seconds) throws InterruptedException {
         Thread.sleep(Duration.ofSeconds(seconds));
     }
+
+    public static void deleteAllCookies() {
+        driver.manage().deleteAllCookies();
+    }
+
+    public static void browserRefresh() {
+        driver.navigate().refresh();
+    }
 }

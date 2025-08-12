@@ -10,6 +10,7 @@ Feature: Test the first scenario.
     Given I Anand developing the Automation Framework and launches a "SIT" site
     When I login to "Test" site with "testing" credential
     Then I should be able to verify that I am able to login to "testing" account
+    And Logout from the application
 
   @Regression_Test
   Scenario: 02 - Second scenario to be tested

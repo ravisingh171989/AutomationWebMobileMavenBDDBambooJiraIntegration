@@ -29,4 +29,11 @@ public class CommonSteps {
     public void i_anand_developing_the_automation_framework_and_launches_a_site( String siteURL ) {
         genericActions.launchURL(siteURL);
     }
+
+    @And("Logout from the application")
+    public void logoutFromTheApplication() throws InterruptedException {
+        GenericActions.deleteAllCookies();
+        GenericActions.sleep(10);
+        GenericActions.browserRefresh();
+    }
 }

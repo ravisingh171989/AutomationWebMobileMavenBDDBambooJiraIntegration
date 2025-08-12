@@ -8,14 +8,18 @@
 
 package AutomationComponents.Worlds;
 
+import AutomationComponents.DomainSpecific.Cookies;
 import org.openqa.selenium.WebDriver;
 
 import java.io.IOException;
 
 public class World {
     public WebDriver driver;
+    public Cookies cookies;
 
     public World() throws IOException {
+        cookies = new Cookies();
+        cookies.setCookies(new io.restassured.http.Cookies());
     }
 
     public WebDriver getDriver() {
